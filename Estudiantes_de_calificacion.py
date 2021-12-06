@@ -1,12 +1,5 @@
 import math, os, random, re, sys
 
- # Complete the 'gradingStudents' function below.
-
- # The function is expected to return an INTEGER_ARRAY.
- # The function accepts INTEGER_ARRAY grades as parameter
-
- #
-
 def gradingStudents(grades):
     
     def sig_multiplo_5(numero):
