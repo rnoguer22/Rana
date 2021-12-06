@@ -20,15 +20,19 @@ def gradingStudents(grades):
         n += 1
         sig_multiplo = multiplos_5[n]
         return sig_multiplo
-        
+
+    grades_redond = []
+
     for i in grades:
         if 40 <= i <= 100:
             diferencia = sig_multiplo_5(i) - i
             if diferencia < 3:
-                i = sig_multiplo_5(i)
+                m = sig_multiplo_5(i)
+                grades_redond.append(m)
+            else:
+                grades_redond.append(i)
         else:
-            i = i
-    grades_redond = tuple(grades)
+            grades_redond.append(i)
     return grades_redond
 
 if __name__ == '__main__':
