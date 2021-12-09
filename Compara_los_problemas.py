@@ -1,8 +1,8 @@
 import math, os, random, re, sys
 
 def compareTriplets(a, b):
-    calificacion_lucia = 0
-    calificacion_carlos = 0
+    calificacion_lucia = 0   # Aqui se va a almacenar la puntuacion de Lucia
+    calificacion_carlos = 0  # Aqui se va a almacenar la puntiacion de Carlos
     for i in range (3):
         if a[i] > b[i]:
             calificacion_lucia += 1
@@ -15,8 +15,18 @@ def compareTriplets(a, b):
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    a = list(map(int, input().rstrip().split()))
-    b = list(map(int, input().rstrip().split()))
+    
+    a = []   # Creamos las listas donde se van a almacenar
+    b = []   # los puntos de Lucia y de Carlos
+    print ("Introduzca los puntos de Lucia:")
+    for i in range (3):
+        nota = int(input().rstrip())
+        a.append(nota)   # Añadimos a la lista "a" los puntos de Lucia
+    print ("Introduzca los puntos de Carlos:")
+    for i in range (3):
+        nota_ = int(input().rstrip())
+        b.append(nota_)  # Añadimos a la lista "b" los puntos de Carlos
+
     result = compareTriplets(a, b)
     fptr.write(' '.join(map(str, result)))
     fptr.write('\n')
