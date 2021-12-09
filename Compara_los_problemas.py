@@ -1,23 +1,23 @@
-import math
-import os
-import random
-import re
-import sys
-#
-# Complete the 'compareTriplets' function below.
-#
-# The function is expected to return an INTEGER_ARRAY.
-# The function accepts following parameters:
-# 1. INTEGER_ARRAY a
-# 2. INTEGER_ARRAY b
-#
+import math, os, random, re, sys
+
 def compareTriplets(a, b):
-# Write your code here
+    calificacion_lucia = 0
+    calificacion_carlos = 0
+    for i in range (3):
+        if a[i] > b[i]:
+            calificacion_lucia += 1
+        if a[i] < b[i]:
+            calificacion_carlos += 1
+        if a[i] == b[i]:
+            continue
+    matriz_retorno = [calificacion_lucia, calificacion_carlos]
+    return matriz_retorno
+
 if __name__ == '__main__':
-fptr = open(os.environ['OUTPUT_PATH'], 'w')
-a = list(map(int, input().rstrip().split()))
-b = list(map(int, input().rstrip().split()))
-result = compareTriplets(a, b)
-fptr.write(' '.join(map(str, result)))
-fptr.write('\n')
-fptr.close()
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    a = list(map(int, input().rstrip().split()))
+    b = list(map(int, input().rstrip().split()))
+    result = compareTriplets(a, b)
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+    fptr.close()
