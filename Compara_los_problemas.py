@@ -14,7 +14,7 @@ def compareTriplets(a, b):
     return matriz_retorno
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    fptr = open('OUTPUT_PATH', 'w')
     
     a = []   # Creamos las listas donde se van a almacenar
     b = []   # los puntos de Lucia y de Carlos
