@@ -36,11 +36,11 @@ if __name__ == '__main__':
     
     for _ in range(grades_count):
         grades_item = random.randint(0, 100)   # A cada estudiante se le asigna una nota random
+        print (grades_item)
         grades.append(grades_item)   # Almacenamos esa nota en la lista
 
     result = gradingStudents(grades)
 
     fptr.write('\n'.join(map(str, result)))
-    fptr.write('\n')
 
     fptr.close()
