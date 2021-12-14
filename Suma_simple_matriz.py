@@ -1,17 +1,18 @@
 import os
 
 def simpleArraySum(ar):
-    ar_suma = 0
-    for i in ar:
-        ar_suma += i
-    return ar_suma
+    return sum(ar)   # Devuelve la suma de los elementos de la matriz  
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    ar_count = int(input().strip())
-    ar = list(map(int, input().rstrip().split()))
-    result = simpleArraySum(ar)
-    fptr.write(str(result) + '\n')
+    fptr = open('OUTPUT_PATH', 'w')   # Abrimos el archivo
+    
+    ar_count = int(input("Introduzca el tamaño de la matriz: ").strip())
+    ar = []   # Definimos ar como una lista vacia
+    print ("Ahora introduzca los elementos de la matriz:")
+    for _ in range (ar_count):
+        num = int(input().strip())
+        ar.append(num)   # De esta manera podemos introducir los numeros a la lista "ar"
+    
+    result = simpleArraySum(ar)   # Llamamos a la funcion
+    fptr.write(str(result))   # Escribimos la suma de los numeros en el fichero OUTPUT_PATH
     fptr.close()
-    # Comentario de prueba
-    # Otro comentario de prueba
