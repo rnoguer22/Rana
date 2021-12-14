@@ -29,5 +29,5 @@ if __name__ == '__main__':
 
     result = compareTriplets(a, b)
     fptr.write(' '.join(map(str, result)))
-    fptr.write('\n')
+
     fptr.close()
