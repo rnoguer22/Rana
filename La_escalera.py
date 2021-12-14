@@ -1,15 +1,12 @@
-import math
-import os
-import random
-import re
-import sys
-#
-# Complete the 'staircase' function below.
-#
-# The function accepts INTEGER n as parameter.
-#
+import math, os, random, re, sys
+
 def staircase(n):
-# Write your code here
+    escalera = []
+    for i in range (n):
+        escalera.append(["#"]*i)   # Añade a la lista otra lista con el numero de #
+        print (escalera)
+
 if __name__ == '__main__':
-n = int(input().strip())
-staircase(n)
+
+    n = int(input("Tamaño de la escalera: ").strip())
+    staircase(n)
