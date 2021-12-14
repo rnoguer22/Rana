@@ -1,17 +1,18 @@
 import os
 
 def simpleArraySum(ar):
-    ar_suma = 0
-    for i in ar:
-        ar_suma += i
-    return ar_suma
+    return sum(ar)   
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    ar_count = int(input().strip())
-    ar = list(map(int, input().rstrip().split()))
+    fptr = open('OUTPUT_PATH', 'w')
+    
+    ar_count = int(input("Introduzca el tamaño de la matriz: ").strip())
+    ar = []
+    print ("Ahora introduzca los elementos de la matriz:")
+    for _ in range (ar_count):
+        num = int(input().strip())
+        ar.append(num)
+    
     result = simpleArraySum(ar)
-    fptr.write(str(result) + '\n')
+    fptr.write(str(result))
     fptr.close()
-    # Comentario de prueba
-    # Otro comentario de prueba
