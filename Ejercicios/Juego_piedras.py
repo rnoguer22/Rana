@@ -1,22 +1,20 @@
 #!/bin/python3
-import math
-import os
-import random
-import re
-import sys
-#
-# Complete the 'gameOfStones' function below.
-#
-# The function is expected to return a STRING.
-# The function accepts INTEGER n as parameter.
-#
+import math, os, random, re, sys
+
 def gameOfStones(n):
-# Write your code here
+
 if __name__ == '__main__':
-fptr = open(os.environ['OUTPUT_PATH'], 'w')
-t = int(input().strip())
-for t_itr in range(t):
-n = int(input().strip())
-result = gameOfStones(n)
-fptr.write(result + '\n')
-fptr.close()
+    fptr = open('OUTPUT_PATH', 'w')
+    
+    while True:
+        n = input("Numero de piedras: ").strip()
+        try:
+            int(n) == True
+            break
+        except:
+            print ("Introduzca un valor correcto por favor")
+            pass
+    
+    result = gameOfStones(n)
+    fptr.write(result + '\n')
+    fptr.close()
