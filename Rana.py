@@ -80,3 +80,19 @@ def exploracion(Casillax, Casillay, laberinto, n , m, tuneles):
         laberintocopia[Casillax][Casillay]="#"
         probabilidad+=(exploracion(coordenadas.x,coordenadas.y, laberintocopia, n , m, tuneles)/den)
     return probabilidad 
+
+#Utilizamos una condición para las propiedades del laberinto
+if __name__ == '__main__':
+    print("Por favor introduzca las dimensiones del laberinto y el número de tuneles:(filas, columnas, tuneles)")
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    k = int(first_multiple_input[2])
+    laberinto=[]
+    for n_itr in range(n):
+        print("Fila " + str(n_itr) + " del laberinto:(# muro,porcentaje salida, * bomba, $ vacia o tunel")
+        row = input()
+        laberinto.append(list(row))
