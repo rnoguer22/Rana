@@ -1,7 +1,7 @@
 # Rana
 Pincha [aqui](https://github.com/rnoguer22/Rana.git) para acceder al link del repositorio
 
-Hemos resuelto los integrantes del grupo (Paula Naranjo Burdallo y Ruben Nogueras Gonzalez), de manera conjunta, los ejercicios propuestos en "Entrega de Ejercicios Grupales".
+Hemos resuelto los integrantes del grupo (Paula Naranjo Borrallo y Ruben Nogueras Gonzalez), de manera conjunta, los ejercicios propuestos en "Entrega de Ejercicios Grupales".
 El codigo y el diagrama de flujo de cada uno de los ejercicios de la entrega son los siguientes:
 
 Suma simple de una matriz:
