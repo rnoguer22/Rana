@@ -111,3 +111,11 @@ if __name__ == '__main__':
 
         j2 = int(second_multiple_input[3])
         tunels.append(Tunel(i1,j1,i2,j2))
+        
+    #Terminamos nuestro código
+    print("Las coordenadas iniciales de la rana son las siguientes:")
+    third_multiple_input = input().rstrip().split()
+    pos1= int(third_multiple_input[0])
+    pos2= int(third_multiple_input[1])
+    probability= exploracion(pos1,pos2,laberinto,n,m,tunels)
+    print(probability)
