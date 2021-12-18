@@ -6,6 +6,32 @@ El codigo y el diagrama de flujo de cada uno de los ejercicios de la entrega son
 
 Suma simple de una matriz:
 
+```PYTHON3
+import os
+def simpleArraySum(ar):
+    return sum(ar)   # Devuelve la suma de los elementos de la matriz  
+
+if __name__ == '__main__':
+    fptr = open('OUTPUT_PATH', 'w')   # Abrimos el archivo
+    
+    ar_count = int(input("Introduzca el tamaño de la matriz: ").strip())
+    ar = []   # Definimos ar como una lista vacia
+    print ("Ahora introduzca los elementos de la matriz:")
+    for _ in range (ar_count):
+        num = int(input().strip())
+        ar.append(num)   # De esta manera podemos introducir los numeros a la lista "ar"
+    
+    result = simpleArraySum(ar)   # Llamamos a la funcion
+    fptr.write(str(result))   # Escribimos la suma de los numeros en el fichero OUTPUT_PATH
+    fptr.close()
+```
+
+
+ 
+<img width="744" alt="Captura de pantalla 2021-12-18 a las 17 17 33" src="https://user-images.githubusercontent.com/91721496/146648068-aff2e8e3-39ee-460c-a52d-d2a1028bf595.png">
+
+
+    
 Compara los problemas:
 ```Python3
 import math, os, random, re, sys
@@ -47,6 +73,30 @@ if __name__ == '__main__':
 
 Una suma muy grande:
 
+```
+import math, os, random, re, sys
+
+def aVeryBigSum(ar):
+    return sum(ar)   # La funcion devuelve la suma de los elementos de la lista
+
+if __name__ == '__main__':
+    fptr = open('OUTPUT_PATH', 'w')
+    
+    ar_count = int(input("¿Cuantos elementos tiene la lista? ").strip())
+    print ("Introduce los elementos de la lista")
+    ar = []   # En esta lista se almacenaran los numeros
+    for i in range (ar_count):   # Introducimos un bucle para introducir los numeros
+        num = int(input())   # Introducimos un numero
+        ar.append(num)   # El numero se almacena en la lista "ar"
+    
+    result = aVeryBigSum(ar)   # Llamamos a la funcion
+    fptr.write(str(result))   # Escribimos el resultado en el archivo OUTPUT_PATH
+    fptr.close()
+```
+
+  <img width="774" alt="Captura de pantalla 2021-12-18 a las 17 28 17" src="https://user-images.githubusercontent.com/91721496/146648472-1e795677-188b-434c-943e-fbbd61c39a4a.png">
+  
+    
 La escalera:
 ```Python3
 import math, os, random, re, sys
@@ -98,6 +148,109 @@ if __name__ == '__main__':
 ![Diagrama_Juego_piedras](https://user-images.githubusercontent.com/91721762/146639959-84922a99-816c-479e-95a0-97769582218c.png)
 
 Rana en laberinto:
+```
+#Importamos librerias a utilizar
+import math
+import os
+import random
+import re
+import sys
+
+#Determinamos las coordenadas de nuestro laberinto
+class Coordenadas:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def comparate(self,x,y):
+        if(self.x==x and self.y==y):
+            return True
+        else:
+            return False
+#Determinamos las coordenadas del tunel
+class Tunel:
+    def __init__(self, x1, y1, x2, y2):
+        self.extremo1 = Coordenadas(x1, y1)
+        self.extremo2 = Coordenadas(x2, y2)
+        
+#Definimos una funcion para movernos dentro del tunel
+def buscaTunel(Casillax,Casillay,tuneles):
+    coordenadas = Coordenadas(Casillax, Casillay)
+    for t in tuneles:
+        if(t.extremo1.comparate(Casillax,Casillay)==True):
+            coordenadas.x=t.extremo2.x
+            coordenadas.y=t.extremo2.y
+            break
+        elif(t.extremo2.comparate(Casillax,Casillay)==True):
+            coordenadas.x=t.extremo1.x
+            coordenadas.y=t.extremo1.y
+            break
+    return coordenadas
+
+#Definimos una funcion para explorar las casillas
+def exploracion(Casillax, Casillay, laberinto, n , m, tuneles):
+    num=0
+    den=0
+    probabilidad=0.0
+    if(Casillax>0 and laberinto[Casillax-1][Casillay]!="#"):
+        den +=1
+        if(laberinto[Casillax-1][Casillay]=="%"):
+            num+=1
+    if(Casillax<n-1 and laberinto[Casillax+1][Casillay]!="#"):
+        den +=1
+        if(laberinto[Casillax+1][Casillay]=="%"):
+            num+=1
+    if(Casillay<m-1 and laberinto[Casillax][Casillay+1]!="#"):
+        den +=1
+        if(laberinto[Casillax][Casillay+1]=="%"):
+            num+=1
+    if(Casillay>0 and laberinto[Casillax][Casillay-1]!="#"):
+        den +=1
+        if(laberinto[Casillax][Casillay-1]=="%"):
+            num+=1
+    if(den==0):
+        return probabilidad
+    probabilidad=num/den
+    if(Casillax>0 and laberinto[Casillax-1][Casillay]=="$"):
+        laberintocopia=laberinto
+        coordenadas= buscaTunel(Casillax-1,Casillay,tuneles)
+        laberintocopia[Casillax][Casillay]="#"
+        probabilidad+=exploracion(coordenadas.x,coordenadas.y, laberintocopia, n , m, tuneles)/den
+    if(Casillax<n-1 and laberinto[Casillax+1][Casillay]=="$"):
+        laberintocopia=laberinto
+        coordenadas= buscaTunel(Casillax+1,Casillay,tuneles)
+        laberintocopia[Casillax][Casillay]="#"
+        probabilidad+=exploracion(coordenadas.x,coordenadas.y, laberintocopia, n , m, tuneles)/den
+    if(Casillay<m-1 and laberinto[Casillax][Casillay+1]=="$"):
+        laberintocopia=laberinto
+        coordenadas= buscaTunel(Casillax,Casillay+1,tuneles)
+        laberintocopia[Casillax][Casillay]="#"
+        probabilidad+=exploracion(coordenadas.x,coordenadas.y, laberintocopia, n , m, tuneles)/den
+    if(Casillay>0 and laberinto[Casillax][Casillay-1]=="$"):
+        laberintocopia=laberinto
+        coordenadas= buscaTunel(Casillax,Casillay-1,tuneles)
+        laberintocopia[Casillax][Casillay]="#"
+        probabilidad+=(exploracion(coordenadas.x,coordenadas.y, laberintocopia, n , m, tuneles)/den)
+    return probabilidad 
+
+#Utilizamos una condición para las propiedades del laberinto
+if __name__ == '__main__':
+    print("Por favor introduzca las dimensiones del laberinto y el número de tuneles:(filas, columnas, tuneles)")
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    k = int(first_multiple_input[2])
+    laberinto=[]
+    for n_itr in range(n):
+        print("Fila " + str(n_itr) + " del laberinto:(# muro,porcentaje salida, * bomba, $ vacia o tunel")
+        row = input()
+        laberinto.append(list(row))
+```
+
+<img width="727" alt="Captura de pantalla 2021-12-18 a las 17 44 14" src="https://user-images.githubusercontent.com/91721496/146648921-2717916b-666b-436c-bcf8-b62faa8fd08f.png">
+
 
 Estudiantes de calificacion:
 ```Python3
@@ -152,3 +305,55 @@ if __name__ == '__main__':
 ![Diagrama_Estudiantes_de_calificacion](https://user-images.githubusercontent.com/91721762/146640011-bf12fc30-393f-4813-805c-dafbcf2a3e97.png)
 
 Manzana y naranja:
+```
+#Importamos librerias a utilizar
+import math
+import os
+import random
+import re
+import sys
+
+#Definimos la función para contabilizar las manzanas y naranjas
+def countApplesAndOranges(s, t, a, b, apples, oranges):
+    applesinsidethebox=0
+    orangeinsedethebox=0
+    for apple in apples:
+        if(a+apple>=s and a+apple<=t):
+            applesinsidethebox+=1
+    for orange in oranges:
+        if(b+orange>=s and b+orange<=t):
+            orangeinsedethebox+=1
+    print("Han caido " + str(applesinsidethebox) + " manzanas dentro de la caja")
+    print("Han caido " + str(orangeinsedethebox) + " naranjas dentro de la caja.")
+    
+#Definimos una condición para contabilizar las manzanas y naranjas 
+if __name__ == '__main__':
+    first_multiple_input = input().rstrip().split()
+
+    s = int(first_multiple_input[0])
+
+    t = int(first_multiple_input[1])
+
+    second_multiple_input = input().rstrip().split()
+
+
+    a = int(second_multiple_input[0])
+
+    b = int(second_multiple_input[1])
+
+    third_multiple_input = input().rstrip().split()
+
+    m = int(third_multiple_input[0])
+
+    n = int(third_multiple_input[1])
+    apples = list(map(int, input().rstrip().split()))
+
+    oranges = list(map(int, input().rstrip().split()))
+
+    countApplesAndOranges(s, t, a, b, apples, oranges)
+
+```
+
+
+
+<img width="723" alt="Captura de pantalla 2021-12-18 a las 17 49 40" src="https://user-images.githubusercontent.com/91721496/146649079-fadeaf91-cf31-424b-9727-68c85c02c8f2.png">
