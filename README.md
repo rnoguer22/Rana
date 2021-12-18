@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
 Una suma muy grande:
 
-```
+```Python3
 import math, os, random, re, sys
 
 def aVeryBigSum(ar):
@@ -148,7 +148,7 @@ if __name__ == '__main__':
 ![Diagrama_Juego_piedras](https://user-images.githubusercontent.com/91721762/146639959-84922a99-816c-479e-95a0-97769582218c.png)
 
 Rana en laberinto:
-```
+```Python3
 #Importamos librerias a utilizar
 import math
 import os
@@ -305,7 +305,7 @@ if __name__ == '__main__':
 ![Diagrama_Estudiantes_de_calificacion](https://user-images.githubusercontent.com/91721762/146640011-bf12fc30-393f-4813-805c-dafbcf2a3e97.png)
 
 Manzana y naranja:
-```
+```Python3
 #Importamos librerias a utilizar
 import math
 import os
