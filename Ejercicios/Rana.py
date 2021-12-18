@@ -96,3 +96,26 @@ if __name__ == '__main__':
         print("Fila " + str(n_itr) + " del laberinto:(# muro,porcentaje salida, * bomba, $ vacia o tunel")
         row = input()
         laberinto.append(list(row))
+    
+    #Definimos los túneles
+    tunels=[]
+    for k_itr in range(k):
+        print("Las coordenadas(i1 j1 i2 j2) del tunel son " +str(k_itr))
+        second_multiple_input = input().rstrip().split()
+
+        i1 = int(second_multiple_input[0])
+
+        j1 = int(second_multiple_input[1])
+
+        i2 = int(second_multiple_input[2])
+
+        j2 = int(second_multiple_input[3])
+        tunels.append(Tunel(i1,j1,i2,j2))
+        
+    #Terminamos nuestro código
+    print("Las coordenadas iniciales de la rana son las siguientes:")
+    third_multiple_input = input().rstrip().split()
+    pos1= int(third_multiple_input[0])
+    pos2= int(third_multiple_input[1])
+    probability= exploracion(pos1,pos2,laberinto,n,m,tunels)
+    print(probability)
